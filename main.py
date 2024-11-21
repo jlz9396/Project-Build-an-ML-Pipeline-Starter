@@ -1,4 +1,4 @@
-import json
+'''import json
 
 import mlflow
 import tempfile
@@ -103,3 +103,4 @@ def go(config: DictConfig):
 
 if __name__ == "__main__":
     go()
+'''
