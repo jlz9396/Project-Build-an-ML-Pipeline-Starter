@@ -1,4 +1,4 @@
-'''import json
+import json
 
 import mlflow
 import tempfile
@@ -21,7 +21,7 @@ _steps = [
 
 
 # This automatically reads in the configuration
-@hydra.main(config_name='config' , config_path='.', version_base='1.3')
+@hydra.main(config_name='config')
 def go(config: DictConfig):
 
     # Setup the wandb experiment. All runs will be grouped under this name
@@ -103,4 +103,4 @@ def go(config: DictConfig):
 
 if __name__ == "__main__":
     go()
-'''
+
