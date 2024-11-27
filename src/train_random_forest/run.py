@@ -112,7 +112,17 @@ def go(args):
     # Get the columns that we are really using from the pipeline
     # NOTE: I don't use it because we have int columns with nans
     # and these are converted to float, which is a conflict with the signature/schema
-    signature = infer_signature(X_val[processed_features], y_pred)
+    # signature = infer_signature(X_val[processed_features], y_pred)
+    # Ensure input example has consistent types
+    input_example = X_val.iloc[:2].copy()
+
+    # Convert all object columns to strings to ensure consistency
+    for col in input_example.select_dtypes(include=['object']):
+        input_example[col] = input_example[col].astype(str)
+
+    # Clean the data if required (optional step)
+    # For instance, impute missing values
+    input_example.fillna("missing", inplace=True)
 
     with tempfile.TemporaryDirectory() as temp_dir:
 
